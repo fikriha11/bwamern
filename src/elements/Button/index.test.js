@@ -2,7 +2,6 @@ import React from "react";
 import { render } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
 import Button from "./index";
-import { toBeInTheDocument } from "@testing-library/jest-dom/dist/matchers";
 
 test("should not allowed click button if disabled is present", () => {
   const { container } = render(<Button isDisabled></Button>);

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom"; // imrr
-import "@testing-library/jest-dom/extend-expect";
 import propTypes from "prop-types";
+// import "@testing-library/jest-dom/extend-expect";
 
 export default function Button(props) {
   const className = [props.className];
@@ -12,8 +12,8 @@ export default function Button(props) {
   if (props.isBlock) className.push("btn-block");
   if (props.hasShadows) className.push("btn-shadow");
 
-  const onclick = () => {
-    if (props.onclick) props.onclick();
+  const onClick = () => {
+    if (props.onClick) props.onClick();
   };
 
   if (props.isDisabled || props.isLoading) {
@@ -32,12 +32,12 @@ export default function Button(props) {
     );
   }
 
-  if (props.type == "link") {
+  if (props.type === "link") {
     if (props.isExternal) {
       return (
         <a
           href={props.href}
-          className={props.className}
+          className={className.join(" ")}
           style={props.style}
           target={props.target === "_blank" ? "_blank" : undefined}
           rel={props.target === "_blank" ? "noopener noreferrer" : undefined}
@@ -51,7 +51,7 @@ export default function Button(props) {
           to={props.href}
           className={className.join(" ")}
           style={props.style}
-          onclick={onclick}
+          onClick={onClick}
         >
           {props.children}
         </Link>
@@ -63,7 +63,7 @@ export default function Button(props) {
     <button
       className={className.join(" ")}
       style={props.style}
-      onclick={onclick}
+      onClick={onClick}
     >
       {props.children}
     </button>
@@ -73,7 +73,7 @@ export default function Button(props) {
 // Add Atribut for Button Functions
 Button.propTypes = {
   type: propTypes.oneOf(["button", "link"]),
-  onclick: propTypes.func,
+  onClick: propTypes.func,
   href: propTypes.string,
   target: propTypes.string,
   className: propTypes.string,
