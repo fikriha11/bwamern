@@ -8,14 +8,9 @@ function App() {
     <div className="App">
       <Router>
         <Route path="/" component={Landingpage}></Route>
-        <Route path="/sasti" component={Home}></Route>
       </Router>
     </div>
   );
-}
-
-function Home() {
-  return <div> SASTI OKE</div>;
 }
 
 export default App;
